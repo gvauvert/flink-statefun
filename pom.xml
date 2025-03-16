@@ -275,6 +275,22 @@ under the License.
                         <groupId>com.github.docker-java</groupId>
                         <artifactId>docker-java-api</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.kohlschutter.junixsocket</groupId>
+                        <artifactId>junixsocket-common</artifactId>
+                    </exclusion>
+                    <!--
+                        This dependency leads to a version convergence error caused solely by Testcontainers.
+                        See https://github.com/testcontainers/testcontainers-java/issues/3308.
+                    -->
+                    <exclusion>
+                        <groupId>net.java.dev.jna</groupId>
+                        <artifactId>jna</artifactId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -307,6 +323,16 @@ under the License.
                 <artifactId>slf4j-api</artifactId>
                 <version>1.7.36</version>
             </dependency>
+            <dependency>
+                <groupId>net.java.dev.jna</groupId>
+                <artifactId>jna</artifactId>
+                <version>5.5.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kohlschutter.junixsocket</groupId>
+                <artifactId>junixsocket-common</artifactId>
+                <version>${unixsocket.version}</version>
+            </dependency>
             <!--        -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
@@ -332,6 +358,12 @@ under the License.
                 <groupId>org.xerial.snappy</groupId>
                 <artifactId>snappy-java</artifactId>
                 <version>1.1.10.4</version>
+            </dependency>
+            <!-- ???           -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.18.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
