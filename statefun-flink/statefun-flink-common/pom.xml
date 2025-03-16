@@ -31,8 +31,8 @@ under the License.
 
     <properties>
         <additional-sources.dir>target/additional-sources</additional-sources.dir>
-        <!-- same version than statefun-e2e-tests/pom.xml -> root bom ? -->
-        <testcontainers.version>1.19.3</testcontainers.version>
+        <!-- not the same version than statefun-e2e-tests/pom.xml-->
+        <testcontainers.version>1.19.1</testcontainers.version>
     </properties>
 
     <dependencies>
@@ -47,6 +47,27 @@ under the License.
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-core</artifactId>
             <version>${flink.version}</version>
+            <!-- Fix Dependency convergence error for org.apache.commons:commons-lang3:3.12.0 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-text</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.14.0</version>
         </dependency>
 
         <!-- 3rd party -->
@@ -74,6 +95,17 @@ under the License.
             <version>${flink.version}</version>
             <type>test-jar</type>
             <scope>test</scope>
+            <!-- Fix Dependency convergence error for org.apache.commons:commons-lang3:3.12.0 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-text</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-lang3</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
